@@ -1,0 +1,10 @@
+# Copy this file to terraform.tfvars (git-ignored) and edit.
+# Terraform automatically loads terraform.tfvars and uses these values instead of the
+# defaults in variables.tf. Keep personal values (like your email) in the real
+# terraform.tfvars, never in this example file.
+aws_region         = "ap-south-1"
+project_name       = "imgprep"
+notification_email = "you@example.com" # leave "" to skip email notifications
+
+# Origins the React app is served from (default: the local Vite dev server).
+# cors_allowed_origins = ["http://localhost:5173"]

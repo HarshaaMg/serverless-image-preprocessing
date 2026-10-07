@@ -1,0 +1,141 @@
+/* Plain CSS, no framework. Colours are defined once as CSS variables and reused. */
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --text: #1d2330;
+  --muted: #5f6b7a;
+  --border: #dde1e7;
+  --accent: #2563eb;
+  --accent-soft: #e8efff;
+  --good: #15803d;
+  --warn: #b45309;
+  --bad: #b91c1c;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.app { max-width: 1000px; margin: 0 auto; padding: 24px 16px 48px; }
+header h1 { margin: 0 0 4px; font-size: 1.8rem; }
+header p { margin: 0 0 20px; color: var(--muted); }
+footer { margin-top: 32px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.card h2 { margin: 0 0 8px; font-size: 1.15rem; display: flex; align-items: center; gap: 10px; }
+.step {
+  display: inline-grid; place-items: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent); color: #fff; font-size: 0.9rem;
+}
+.hint { color: var(--muted); margin: 0 0 14px; }
+.muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+.break { word-break: break-all; }
+
+.error {
+  color: var(--bad);
+  background: #fdecec;
+  border: 1px solid #f5c2c2;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 12px 0 0;
+}
+.error p { margin: 0 0 8px; }
+.error p:last-child { margin: 0; }
+
+button {
+  font: inherit; cursor: pointer;
+  border-radius: 8px; padding: 10px 16px;
+  border: 1px solid var(--accent);
+  background: var(--accent); color: #fff;
+}
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+button.secondary { background: #fff; color: var(--accent); }
+button.primary { font-size: 1.05rem; padding: 12px 28px; }
+.actions { display: flex; justify-content: center; margin: 8px 0 16px; }
+
+.file-picker {
+  display: inline-block; padding: 10px 16px; border-radius: 8px;
+  border: 2px dashed var(--accent); color: var(--accent); cursor: pointer; font-weight: 600;
+}
+.file-picker input { display: none; }
+.file-picker.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+.selected-file { display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap; align-items: flex-start; }
+.selected-file img { width: 160px; max-height: 160px; object-fit: contain; border-radius: 8px; border: 1px solid var(--border); background: #eee; }
+
+dl { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; margin: 0; }
+dt { color: var(--muted); }
+dd { margin: 0; }
+
+.features { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
+.feature { border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.feature.is-on { border-color: var(--accent); background: var(--accent-soft); }
+.feature-head { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+.feature-head input { margin-top: 5px; width: 18px; height: 18px; }
+.feature-head small { display: block; color: var(--muted); }
+.feature-body { margin: 12px 0 0 28px; display: grid; gap: 10px; }
+.feature-body label { display: grid; gap: 4px; }
+.feature-body label.inline { display: flex; gap: 8px; align-items: center; }
+.feature-body input[type='number'] { padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; width: 140px; font: inherit; }
+.feature-body input[type='range'] { width: 100%; max-width: 420px; }
+.feature-body p { margin: 0; }
+.row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.stages { list-style: none; padding: 0; margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.stages li { padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+.stages li.active { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.stages li.done { background: #e7f6ec; border-color: #b7e2c4; color: var(--good); }
+.stages li.failed { background: #fdecec; border-color: #f5c2c2; color: var(--bad); }
+
+.badge { padding: 2px 8px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; background: #eef0f3; }
+.badge-completed { background: #e7f6ec; color: var(--good); }
+.badge-failed { background: #fdecec; color: var(--bad); }
+.badge-processing, .badge-uploaded { background: var(--accent-soft); color: var(--accent); }
+
+.progress { display: flex; align-items: center; gap: 10px; }
+.spinner {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 3px solid var(--accent-soft); border-top-color: var(--accent);
+  animation: spin 0.9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.results { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.result { border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+.result.original { background: #fafbfc; }
+.result h3 { margin: 10px 0 4px; font-size: 1rem; }
+.result p { margin: 0 0 8px; }
+/* Preview box. The checkerboard background makes transparent PNG areas visible. */
+.thumb {
+  height: 180px; display: grid; place-items: center; border-radius: 8px; overflow: hidden;
+  background-color: #eee;
+  /* checkerboard so transparent PNG areas are visible */
+  background-image: linear-gradient(45deg, #ddd 25%, transparent 25%), linear-gradient(-45deg, #ddd 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ddd 75%), linear-gradient(-45deg, transparent 75%, #ddd 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+}
+.thumb img { max-width: 100%; max-height: 100%; object-fit: contain; image-rendering: auto; }
+.details { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 0.85rem; }
+.tone-good { color: var(--good); font-weight: 600; }
+.tone-warn { color: var(--warn); font-weight: 600; }
+
+.downloads { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* Responsive layout: on narrow (phone) screens, stack controls and full-width buttons. */
+@media (max-width: 560px) {
+  .card { padding: 16px; }
+  .feature-body { margin-left: 0; }
+  .downloads button { width: 100%; }
+}

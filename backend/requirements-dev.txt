@@ -1,0 +1,7 @@
+# Development and test dependencies (NOT packaged into Lambda).
+# Install with: backend\.venv\Scripts\python.exe -m pip install -r backend\requirements-dev.txt
+-r requirements.txt
+boto3==1.43.108
+# moto = mocked AWS for tests; [server] adds the HTTP mock server used by local/dev_server.py
+moto[server]==5.2.3
+pytest==9.1.1

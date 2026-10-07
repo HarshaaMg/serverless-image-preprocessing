@@ -1,0 +1,4 @@
+# Runtime dependencies packaged into the Lambda zip (boto3 is provided by the Lambda runtime)
+# Pinned to an exact version so the Lambda package and local tests use the same Pillow.
+# scripts/build_lambda.ps1 installs the LINUX build of this version into the package.
+Pillow==12.3.0
